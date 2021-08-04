@@ -1,0 +1,10 @@
+{
+    "appName": "Application name",
+    "greeting": "Hello, Done!",
+    "home_screen" : {
+        "body" : "Home Screen Body Text" 
+    },
+    "en": "English",
+    "start": "Start" 
+   
+}

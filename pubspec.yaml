@@ -1,0 +1,58 @@
+name: simple_booking_ui
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+
+dependencies:
+  # Localization
+  easy_localization: ^3.0.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  # State Management
+  flutter_riverpod: ^0.13.1+1
+  # Serialization
+  json_annotation: ^4.0.1
+
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+  json_serializable: ^4.1.0
+  lint: ^1.5.3
+
+
+################# Assets ###################
+
+flutter:
+  uses-material-design: true
+
+  assets:
+   - assets/translations/
+   - assets/fonts/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+    
+  
