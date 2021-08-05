@@ -8,22 +8,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(tr(LocaleKeys.greeting)),
-        centerTitle: true,
-      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              LocaleKeys.home_screen_body,
-              style: context.textTheme.headline5,
-            ).tr(),
-            SizedBox(
-              height: kSpaceSmall,
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text(
+            LocaleKeys.userActions_startBooking,
+            style: context.textTheme.button,
+          ),
         ),
       ),
     );

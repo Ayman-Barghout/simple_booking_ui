@@ -1,10 +1,24 @@
 {
-    "appName": "Application name",
-    "greeting": "Hello, Done!",
-    "home_screen" : {
-        "body" : "Home Screen Body Text" 
+    "appName": "BookIn",
+    "userActions": {
+        "startBooking": "Start Booking",
+        "continue": "Continue",
+        "confirmBooking": "Confirm Booking",
+        "dismiss": "Dismiss",
+        "cancel": "Cancel"
     },
-    "en": "English",
-    "start": "Start" 
-   
+    "bookingSteps": {
+        "name": "Name",
+        "budget": "Budget",
+        "summary": "Summary",
+        "complete": "Booking Complete" 
+    },
+    "bookForQuote": "Book video call for quote",
+    "nameStepPrompt": "Thank you for booking a video call with Done. First we need to know a bit about you.",
+    "budgetStepPrompt": "What is your budget? We will be in touch if we believe your project won’t fit into the budget.",
+    "name": "Name",
+    "budget": "Budget",
+    "currency": "kr",
+    "over": "Over",
+    "confirming": "Confirming..."
 }
