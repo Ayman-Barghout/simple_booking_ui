@@ -36,6 +36,20 @@ final theme = ThemeData(
       ),
       labelStyle: overline,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+            textStyle: MaterialStateProperty.all<TextStyle>(button),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(kRadiusSmall),
+            )),
+            backgroundColor: MaterialStateColor.resolveWith((states) {
+              if (states.contains(MaterialState.disabled)) {
+                return kLightTextColor;
+              } else {
+                return kPrimaryColor;
+              }
+            }))),
     textTheme: TextTheme(
         headline1: headline1,
         subtitle1: subtitle1,
