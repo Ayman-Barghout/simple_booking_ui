@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:simple_booking_ui/helpers/ui/dimensions.dart';
-import 'package:simple_booking_ui/helpers/ui/ui_helpers.dart';
+import 'package:simple_booking_ui/theme/dimensions.dart';
+import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,8 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            tr(LocaleKeys.greeting)), //* <-- Generated LocaleKeys usage example
+        title: Text(tr(LocaleKeys.greeting)),
         centerTitle: true,
       ),
       body: Center(
