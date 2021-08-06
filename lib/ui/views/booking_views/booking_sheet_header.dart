@@ -17,7 +17,7 @@ class BookingSheetHeader extends StatelessWidget {
 
   final String title;
   final bool showBackButton;
-  final void Function() onBackButtonPress;
+  final VoidCallback onBackButtonPress;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,12 @@ class BookingSheetHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (showBackButton)
+            IconButton(
+              icon: Icon(Icons.arrow_back_ios_new),
+              onPressed: onBackButtonPress,
+            ),
+          if (showBackButton) SizedBox(width: kSpaceXXSmall),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
