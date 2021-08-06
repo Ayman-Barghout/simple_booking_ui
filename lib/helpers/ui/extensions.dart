@@ -10,8 +10,9 @@ extension SugarExt on BuildContext {
   double widthR(double value) => MediaQuery.of(this).size.width * value;
 
   //* Theme Extensions
-  TextTheme get textTheme => Theme.of(this).textTheme;
   ThemeData get theme => Theme.of(this);
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
   //* Close Keyboard
   void closeKeyboard() {

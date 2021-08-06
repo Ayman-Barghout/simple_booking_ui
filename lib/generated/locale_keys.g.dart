@@ -13,6 +13,8 @@ abstract class  LocaleKeys {
   static const bookingSteps_summary = 'bookingSteps.summary';
   static const bookingSteps_complete = 'bookingSteps.complete';
   static const bookingSteps = 'bookingSteps';
+  static const labels_fullName = 'labels.fullName';
+  static const labels = 'labels';
   static const bookForQuote = 'bookForQuote';
   static const nameStepPrompt = 'nameStepPrompt';
   static const budgetStepPrompt = 'budgetStepPrompt';

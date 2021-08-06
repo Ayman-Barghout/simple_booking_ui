@@ -27,7 +27,7 @@ class CustomElevatedButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             leading ?? SizedBox(),
-            if (leading != null) SizedBox(width: kSpaceSmall),
+            if (leading != null) SizedBox(width: kSpaceXSmall),
             Text(text),
           ],
         ),

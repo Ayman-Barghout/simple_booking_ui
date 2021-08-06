@@ -5,6 +5,9 @@ final headline1 =
     TextStyle(color: kPrimaryColor, fontSize: 24, fontWeight: FontWeight.w700);
 
 final subtitle1 =
+    TextStyle(color: kPrimaryColor, fontSize: 17, fontWeight: FontWeight.w400);
+
+final subtitle2 =
     TextStyle(color: kPrimaryColor, fontSize: 15, fontWeight: FontWeight.w400);
 
 final bodyText1 =

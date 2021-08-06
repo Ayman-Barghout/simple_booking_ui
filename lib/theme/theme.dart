@@ -23,7 +23,7 @@ final theme = ThemeData(
     primaryIconTheme: const IconThemeData(color: kPrimaryColor),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding:
-          EdgeInsets.symmetric(vertical: kSpaceSmall, horizontal: kSpaceMedium),
+          EdgeInsets.symmetric(vertical: kSpaceXSmall, horizontal: kSpaceSmall),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(kRadiusSmall),
         gapPadding: 0,
@@ -35,6 +35,7 @@ final theme = ThemeData(
         borderSide: BorderSide(color: kBorderColor),
       ),
       labelStyle: overline,
+      hintStyle: overline,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -50,9 +51,21 @@ final theme = ThemeData(
                 return kPrimaryColor;
               }
             }))),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        textStyle: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.disabled)) {
+            return subtitle2.copyWith(color: kLightTextColor);
+          } else {
+            return subtitle2;
+          }
+        }),
+      ),
+    ),
     textTheme: TextTheme(
         headline1: headline1,
         subtitle1: subtitle1,
+        subtitle2: subtitle2,
         bodyText1: bodyText1,
         button: button,
         caption: caption,
