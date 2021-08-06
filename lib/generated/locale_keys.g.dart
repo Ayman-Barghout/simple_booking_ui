@@ -15,6 +15,9 @@ abstract class  LocaleKeys {
   static const bookingSteps = 'bookingSteps';
   static const labels_fullName = 'labels.fullName';
   static const labels = 'labels';
+  static const validation_required = 'validation.required';
+  static const validation_minLength = 'validation.minLength';
+  static const validation = 'validation';
   static const bookForQuote = 'bookForQuote';
   static const nameStepPrompt = 'nameStepPrompt';
   static const budgetStepPrompt = 'budgetStepPrompt';

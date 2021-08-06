@@ -16,6 +16,12 @@
     "labels": {
         "fullName": "Your full name"
     },
+    "validation": {
+        "required": "This field is required",
+        "minLength": {
+            "other": "Please enter more than {} letters"
+          }
+    },
     "bookForQuote": "Book video call for quote",
     "nameStepPrompt": "Thank you for booking a video call with Done.\nFirst we need to know a bit about you.",
     "budgetStepPrompt": "What is your budget? We will be in touch if we believe your project won’t fit into the budget.",

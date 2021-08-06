@@ -61,8 +61,10 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
         builder: (context, constraints) => Container(
           height: constraints.maxHeight * 0.93,
           decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-              color: Colors.white),
+            color: Colors.white,
+            borderRadius:
+                BorderRadius.vertical(top: Radius.circular(kRadiusMedium)),
+          ),
           padding: const EdgeInsets.only(top: kSpaceXLarge),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

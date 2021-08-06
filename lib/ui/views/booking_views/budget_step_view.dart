@@ -24,26 +24,35 @@ class BudgetStepView extends StatelessWidget {
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kSpaceMedium),
+        padding: const EdgeInsets.only(left: kSpaceMedium),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              tr(LocaleKeys.budgetStepPrompt),
-              style: context.textTheme.bodyText1,
+            Padding(
+              padding: const EdgeInsets.only(right: kSpaceXXSmall),
+              child: Text(
+                tr(LocaleKeys.budgetStepPrompt),
+                style: context.textTheme.bodyText1,
+              ),
             ),
             const SizedBox(
               height: kSpaceXXLarge,
             ),
-            const BudgetsList(),
+            const Padding(
+              padding: EdgeInsets.only(right: kSpaceMedium),
+              child: BudgetsList(),
+            ),
             const SizedBox(
               height: kSpaceXSmall,
             ),
-            CustomElevatedButton(
-              text: tr(LocaleKeys.userActions_continue),
-              onPressed: () {
-                onSuccess();
-              },
+            Padding(
+              padding: const EdgeInsets.only(right: kSpaceMedium),
+              child: CustomElevatedButton(
+                text: tr(LocaleKeys.userActions_continue),
+                onPressed: () {
+                  onSuccess();
+                },
+              ),
             ),
           ],
         ),

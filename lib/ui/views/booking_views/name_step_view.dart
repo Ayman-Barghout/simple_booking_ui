@@ -32,7 +32,7 @@ class _NameStepViewState extends State<NameStepView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kSpaceMedium),
+      padding: const EdgeInsets.only(left: kSpaceMedium),
       child: Form(
         key: _formStateKey,
         child: Column(
@@ -45,37 +45,44 @@ class _NameStepViewState extends State<NameStepView> {
             const SizedBox(
               height: kSpaceXXLarge,
             ),
-            TextFormField(
-              initialValue: fullName,
-              style: context.textTheme.subtitle1,
-              decoration: InputDecoration(
-                  alignLabelWithHint: true,
-                  labelText: tr(LocaleKeys.labels_fullName)),
-              onChanged: (value) {
-                fullName = value;
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "This field is required";
-                } else if (value.length < 3) {
-                  return "Name must be more than 3 letters";
-                } else {
-                  return null;
-                }
-              },
+            Padding(
+              padding: const EdgeInsets.only(right: kSpaceMedium),
+              child: TextFormField(
+                initialValue: fullName,
+                style: context.textTheme.subtitle1,
+                decoration: InputDecoration(
+                    alignLabelWithHint: true,
+                    labelText: tr(LocaleKeys.labels_fullName)),
+                onChanged: (value) {
+                  fullName = value;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return tr(LocaleKeys.validation_required);
+                  } else if (value.length < 3) {
+                    return plural(LocaleKeys.validation_minLength, 3);
+                  } else {
+                    return null;
+                  }
+                },
+              ),
             ),
             const SizedBox(
               height: kSpaceMedium,
             ),
-            CustomElevatedButton(
-              text: tr(LocaleKeys.userActions_continue),
-              onPressed: () {
-                if (_formStateKey.currentState != null &&
-                    _formStateKey.currentState!.validate()) {
-                  context.read(bookingInfoProvider).updateFullName(fullName!);
-                  widget.onSuccess();
-                }
-              },
+            Padding(
+              padding: const EdgeInsets.only(right: kSpaceMedium),
+              child: CustomElevatedButton(
+                text: tr(LocaleKeys.userActions_continue),
+                onPressed: () {
+                  if (_formStateKey.currentState != null &&
+                      _formStateKey.currentState!.validate()) {
+                    context.read(bookingInfoProvider).updateFullName(fullName!);
+                    context.closeKeyboard();
+                    widget.onSuccess();
+                  }
+                },
+              ),
             ),
           ],
         ),
