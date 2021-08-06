@@ -97,7 +97,7 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
               Expanded(
                 child: PageView(
                   controller: _pageController,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     NameStepView(
                       onSuccess: () {
@@ -150,10 +150,10 @@ class Header extends StatelessWidget {
         children: [
           if (showBackButton)
             IconButton(
-              icon: Icon(Icons.arrow_back_ios_new_rounded),
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
               onPressed: onBackButtonPress,
             ),
-          if (showBackButton) SizedBox(width: kSpaceXXSmall),
+          if (showBackButton) const SizedBox(width: kSpaceXXSmall),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

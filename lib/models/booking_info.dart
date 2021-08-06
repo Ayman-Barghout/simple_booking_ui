@@ -21,7 +21,7 @@ class BookingInfo {
   Map<String, dynamic> toJson() => _$BookingInfoToJson(this);
 
   bool validate() {
-    return this.fullName != null && this.fullName!.length > 3;
+    return fullName != null && fullName!.length > 3;
   }
 
   BookingInfo copyWith({

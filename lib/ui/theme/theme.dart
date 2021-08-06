@@ -6,7 +6,7 @@ import 'package:simple_booking_ui/ui/theme/text_styles.dart';
 
 final theme = ThemeData(
     fontFamily: 'Inter',
-    colorScheme: ColorScheme(
+    colorScheme: const ColorScheme(
         primary: kPrimaryColor,
         secondary: kSecondaryColor,
         onPrimary: kBackgroundColor,
@@ -22,17 +22,17 @@ final theme = ThemeData(
         secondaryVariant: kSecondaryVariantColor),
     primaryIconTheme: const IconThemeData(color: kPrimaryColor),
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding:
-          EdgeInsets.symmetric(vertical: kSpaceXSmall, horizontal: kSpaceSmall),
+      contentPadding: const EdgeInsets.symmetric(
+          vertical: kSpaceXSmall, horizontal: kSpaceSmall),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(kRadiusSmall),
         gapPadding: 0,
-        borderSide: BorderSide(color: kBorderColor),
+        borderSide: const BorderSide(color: kBorderColor),
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(kRadiusSmall),
         gapPadding: 0,
-        borderSide: BorderSide(color: kBorderColor),
+        borderSide: const BorderSide(color: kBorderColor),
       ),
       labelStyle: overline,
       hintStyle: overline,
@@ -62,7 +62,7 @@ final theme = ThemeData(
         }),
       ),
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
         headline1: headline1,
         subtitle1: subtitle1,
         subtitle2: subtitle2,

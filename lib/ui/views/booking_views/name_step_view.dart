@@ -9,7 +9,7 @@ import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
 
 class NameStepView extends StatefulWidget {
-  NameStepView({
+  const NameStepView({
     Key? key,
     required this.onSuccess,
   }) : super(key: key);

@@ -13,7 +13,7 @@ import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
 import 'package:simple_booking_ui/ui/widgets/selectable_outlined_button.dart';
 
 class BudgetStepView extends StatelessWidget {
-  BudgetStepView({
+  const BudgetStepView({
     Key? key,
     required this.onSuccess,
   }) : super(key: key);
@@ -21,29 +21,32 @@ class BudgetStepView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kSpaceMedium),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            tr(LocaleKeys.budgetStepPrompt),
-            style: context.textTheme.bodyText1,
-          ),
-          const SizedBox(
-            height: kSpaceXXLarge,
-          ),
-          const BudgetsList(),
-          const SizedBox(
-            height: kSpaceXSmall,
-          ),
-          CustomElevatedButton(
-            text: tr(LocaleKeys.userActions_continue),
-            onPressed: () {
-              onSuccess();
-            },
-          ),
-        ],
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kSpaceMedium),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              tr(LocaleKeys.budgetStepPrompt),
+              style: context.textTheme.bodyText1,
+            ),
+            const SizedBox(
+              height: kSpaceXXLarge,
+            ),
+            const BudgetsList(),
+            const SizedBox(
+              height: kSpaceXSmall,
+            ),
+            CustomElevatedButton(
+              text: tr(LocaleKeys.userActions_continue),
+              onPressed: () {
+                onSuccess();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

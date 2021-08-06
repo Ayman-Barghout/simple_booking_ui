@@ -1,0 +1,10 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  errors:
+    missing_return: error
+    todo: ignore
+    invalid_assignment: warning
+    dead_code: info
+  exclude:
+  - "lib/generated/*"
