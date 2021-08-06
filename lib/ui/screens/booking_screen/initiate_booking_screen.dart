@@ -4,7 +4,7 @@ import 'package:simple_booking_ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class InitiateBookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
