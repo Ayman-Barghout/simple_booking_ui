@@ -21,7 +21,6 @@
     "budgetStepPrompt": "What is your budget? We will be in touch if we believe your project won’t fit into the budget.",
     "name": "Name",
     "budget": "Budget",
-    "currency": "kr",
     "over": "Over",
     "confirming": "Confirming..."
 }

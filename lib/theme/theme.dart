@@ -11,7 +11,7 @@ final theme = ThemeData(
         secondary: kSecondaryColor,
         onPrimary: kBackgroundColor,
         surface: kBackgroundColor,
-        onSurface: kPrimaryColor,
+        onSurface: kBorderColor,
         background: kBackgroundColor,
         primaryVariant: kPrimaryColor,
         onBackground: kPrimaryColor,

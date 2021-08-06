@@ -5,13 +5,15 @@ import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 
 import 'package:simple_booking_ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/booking_steps_views.dart';
+import 'package:simple_booking_ui/ui/views/booking_views/budget_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking_views/name_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/booking_sheet_header.dart';
 
-final currentPositionProvider = StateProvider.autoDispose<double>((ref) => 0.0);
+final _currentPositionProvider =
+    StateProvider.autoDispose<double>((ref) => 0.0);
 
-final currentPageProvider = Provider.autoDispose<int>(
-    (ref) => ref.watch(currentPositionProvider).state.round());
+final _currentPageProvider = Provider.autoDispose<int>(
+    (ref) => ref.watch(_currentPositionProvider).state.round());
 
 class BookingBottomSheet extends StatefulWidget {
   const BookingBottomSheet({Key? key}) : super(key: key);
@@ -36,7 +38,7 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
 
     _pageController.addListener(() {
       if (_pageController.page != null) {
-        context.read(currentPositionProvider).state = _pageController.page!;
+        context.read(_currentPositionProvider).state = _pageController.page!;
       }
     });
   }
@@ -63,7 +65,7 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Consumer(builder: (context, watch, child) {
-              final currentPage = watch(currentPageProvider);
+              final currentPage = watch(_currentPageProvider);
 
               return BookingSheetHeader(
                 title: stepsTitles[currentPage],
@@ -77,9 +79,9 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
               height: kSpaceMedium,
             ),
             Consumer(builder: (context, watch, child) {
-              final currentPosition = watch(currentPositionProvider).state;
+              final currentPosition = watch(_currentPositionProvider).state;
               final progress = (currentPosition + 1) / stepsTitles.length;
-              print('updating progress');
+
               return LinearProgressIndicator(
                 minHeight: kSpaceXXSmall,
                 value: progress,
@@ -94,14 +96,14 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
                 controller: _pageController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  NameStep(
+                  NameStepView(
                     onSuccess: () {
                       _animateToPage(1);
                     },
                   ),
-                  BudgetStep(
+                  BudgetStepView(
                     onSuccess: () {
-                      _animateToPage(1);
+                      _animateToPage(2);
                     },
                   ),
                 ],

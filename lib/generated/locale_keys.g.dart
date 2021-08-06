@@ -20,7 +20,6 @@ abstract class  LocaleKeys {
   static const budgetStepPrompt = 'budgetStepPrompt';
   static const name = 'name';
   static const budget = 'budget';
-  static const currency = 'currency';
   static const over = 'over';
   static const confirming = 'confirming';
 

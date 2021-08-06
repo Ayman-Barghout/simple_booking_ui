@@ -28,7 +28,7 @@ class BookingSheetHeader extends StatelessWidget {
         children: [
           if (showBackButton)
             IconButton(
-              icon: Icon(Icons.arrow_back_ios_new),
+              icon: Icon(Icons.arrow_back_ios_new_rounded),
               onPressed: onBackButtonPress,
             ),
           if (showBackButton) SizedBox(width: kSpaceXXSmall),
