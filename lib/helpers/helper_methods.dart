@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
-import 'package:simple_booking_ui/models/budget.dart';
+import 'package:simple_booking_ui/models/booking/budget.dart';
 
 String getTextForBudget(Budget budget) {
   switch (budget) {

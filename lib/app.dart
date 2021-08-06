@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:simple_booking_ui/ui/theme/theme.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/initiate_booking_screen.dart';
+import 'package:simple_booking_ui/ui/views/booking/initiate_booking_screen.dart';
 
 class App extends StatelessWidget {
   @override

@@ -64,6 +64,7 @@ final theme = ThemeData(
     ),
     textTheme: const TextTheme(
         headline1: headline1,
+        headline2: headline2,
         subtitle1: subtitle1,
         subtitle2: subtitle2,
         bodyText1: bodyText1,

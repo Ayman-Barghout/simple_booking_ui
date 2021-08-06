@@ -1,12 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:simple_booking_ui/models/booking_info.dart';
-import 'package:simple_booking_ui/models/budget.dart';
+import 'package:simple_booking_ui/models/booking/booking_info.dart';
+import 'package:simple_booking_ui/models/booking/budget.dart';
+import 'package:simple_booking_ui/services/booking/booking_service.dart';
+import 'package:simple_booking_ui/services/booking/booking_service_firebase.dart';
 
-final bookingInfoProvider = StateNotifierProvider<BookingViewsProvider>(
-    (ref) => BookingViewsProvider());
+final isConfirmingBooking = StateProvider.autoDispose<bool>((ref) => false);
+
+final bookingInfoProvider = StateNotifierProvider<BookingViewsProvider>((ref) {
+  final bookingService = ref.watch(bookingServiceFirebaseProvider);
+  return BookingViewsProvider(bookingService);
+});
 
 class BookingViewsProvider extends StateNotifier<BookingInfo> {
-  BookingViewsProvider() : super(BookingInfo.empty());
+  BookingViewsProvider(this._bookingService) : super(BookingInfo.empty());
+
+  final BookingService _bookingService;
 
   void updateFullName(String fullName) {
     state = state.copyWith(fullName: fullName);
@@ -16,15 +24,19 @@ class BookingViewsProvider extends StateNotifier<BookingInfo> {
     state = state.copyWith(budget: budget);
   }
 
-  bool validate() {
+  bool _isStateValid() {
     return state.validate();
   }
 
   Future<bool> confirmBooking() async {
-    return true;
+    if (_isStateValid()) {
+      return _bookingService.confirmBooking(state);
+    } else {
+      return false;
+    }
   }
 
-  void clear() {
+  void reset() {
     state = BookingInfo.empty();
   }
 }

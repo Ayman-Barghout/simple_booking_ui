@@ -7,9 +7,9 @@ import 'package:simple_booking_ui/providers/booking_views_provider.dart';
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/ui/widgets/cancel_button.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/budget_step_view.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/name_step_view.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/summary_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/budget_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/name_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/summary_step_view.dart';
 
 final _currentPositionProvider =
     StateProvider.autoDispose<double>((ref) => 0.0);
@@ -111,9 +111,7 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
                         _animateToPage(2);
                       },
                     ),
-                    SummaryStepView(
-                      onSuccess: () {},
-                    ),
+                    const SummaryStepView(),
                   ],
                 ),
               ),
@@ -147,34 +145,38 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kSpaceSmall),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (showBackButton)
-            IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded),
-              onPressed: onBackButtonPress,
-            ),
-          if (showBackButton) const SizedBox(width: kSpaceXXSmall),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: context.textTheme.headline1),
-              const SizedBox(
-                height: kSpaceXSmall,
+      child: Consumer(builder: (context, watch, child) {
+        final isConfirming = watch(isConfirmingBooking).state;
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (showBackButton)
+              IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                onPressed: isConfirming ? null : onBackButtonPress,
               ),
-              Text(tr(LocaleKeys.bookForQuote),
-                  style: context.textTheme.caption),
-            ],
-          ),
-          const Spacer(),
-          CancelButton(onPressed: () {
-            context.read(bookingInfoProvider).clear();
-
-            Navigator.of(context).pop();
-          })
-        ],
-      ),
+            if (showBackButton) const SizedBox(width: kSpaceXXSmall),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: context.textTheme.headline1),
+                const SizedBox(
+                  height: kSpaceXSmall,
+                ),
+                Text(tr(LocaleKeys.bookForQuote),
+                    style: context.textTheme.caption),
+              ],
+            ),
+            const Spacer(),
+            CancelButton(
+                onPressed: isConfirming
+                    ? null
+                    : () {
+                        Navigator.of(context).pop();
+                      })
+          ],
+        );
+      }),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:simple_booking_ui/models/budget.dart';
+import 'package:simple_booking_ui/models/booking/budget.dart';
 
 part 'booking_info.g.dart';
 
@@ -21,7 +21,7 @@ class BookingInfo {
   Map<String, dynamic> toJson() => _$BookingInfoToJson(this);
 
   bool validate() {
-    return fullName != null && fullName!.length > 3;
+    return fullName != null && fullName!.length >= 3;
   }
 
   BookingInfo copyWith({

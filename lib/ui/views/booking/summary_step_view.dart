@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -13,9 +14,7 @@ import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
 class SummaryStepView extends StatelessWidget {
   const SummaryStepView({
     Key? key,
-    required this.onSuccess,
   }) : super(key: key);
-  final VoidCallback onSuccess;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +35,35 @@ class SummaryStepView extends StatelessWidget {
               title: tr(LocaleKeys.bookingSteps_budget),
               value: getTextForBudget(bookingInfo.budget),
             ),
-            const Spacer(),
+            const Spacer(flex: 22),
             Padding(
               padding: const EdgeInsets.only(right: kSpaceMedium),
-              child: CustomElevatedButton(
-                text: tr(LocaleKeys.userActions_confirmBooking),
-                onPressed: () {
-                  onSuccess();
-                },
-              ),
+              child: Consumer(builder: (context, watch, child) {
+                final isConfirming = watch(isConfirmingBooking).state;
+                return CustomElevatedButton(
+                  text: tr(isConfirming
+                      ? LocaleKeys.confirming
+                      : LocaleKeys.userActions_confirmBooking),
+                  leading: isConfirming
+                      ? Theme(
+                          data: context.theme
+                              .copyWith(brightness: Brightness.dark),
+                          child: const CupertinoActivityIndicator(
+                            radius: 12,
+                          ))
+                      : null,
+                  onPressed: () async {
+                    context.read(isConfirmingBooking).state = true;
+                    final result = await context
+                        .read(bookingInfoProvider)
+                        .confirmBooking();
+
+                    Navigator.of(context).pop<bool>(result);
+                  },
+                );
+              }),
             ),
-            const Spacer(),
+            const Spacer(flex: 10),
           ],
         );
       }),
