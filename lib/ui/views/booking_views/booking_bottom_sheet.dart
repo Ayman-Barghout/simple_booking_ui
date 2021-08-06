@@ -8,6 +8,7 @@ import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/budget_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/name_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/booking_sheet_header.dart';
+import 'package:simple_booking_ui/ui/views/booking_views/summary_step_view.dart';
 
 final _currentPositionProvider =
     StateProvider.autoDispose<double>((ref) => 0.0);
@@ -105,6 +106,9 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
                     onSuccess: () {
                       _animateToPage(2);
                     },
+                  ),
+                  SummaryStepView(
+                    onSuccess: () {},
                   ),
                 ],
               ),
