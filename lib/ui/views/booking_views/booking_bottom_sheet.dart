@@ -2,12 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
+import 'package:simple_booking_ui/providers/booking_views_provider.dart';
 
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
+import 'package:simple_booking_ui/ui/widgets/cancel_button.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/budget_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/name_step_view.dart';
-import 'package:simple_booking_ui/ui/views/booking_views/booking_sheet_header.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/summary_step_view.dart';
 
 final _currentPositionProvider =
@@ -69,7 +70,7 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
               Consumer(builder: (context, watch, child) {
                 final currentPage = watch(_currentPageProvider);
 
-                return BookingSheetHeader(
+                return Header(
                   title: stepsTitles[currentPage],
                   showBackButton: currentPage > 0,
                   onBackButtonPress: () {
@@ -125,5 +126,53 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+}
+
+class Header extends StatelessWidget {
+  const Header(
+      {Key? key,
+      required this.title,
+      required this.showBackButton,
+      required this.onBackButtonPress})
+      : super(key: key);
+
+  final String title;
+  final bool showBackButton;
+  final VoidCallback onBackButtonPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kSpaceSmall),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (showBackButton)
+            IconButton(
+              icon: Icon(Icons.arrow_back_ios_new_rounded),
+              onPressed: onBackButtonPress,
+            ),
+          if (showBackButton) SizedBox(width: kSpaceXXSmall),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: context.textTheme.headline1),
+              const SizedBox(
+                height: kSpaceXSmall,
+              ),
+              Text(tr(LocaleKeys.bookForQuote),
+                  style: context.textTheme.caption),
+            ],
+          ),
+          const Spacer(),
+          CancelButton(onPressed: () {
+            context.read(bookingInfoProvider).clear();
+
+            Navigator.of(context).pop();
+          })
+        ],
+      ),
+    );
   }
 }

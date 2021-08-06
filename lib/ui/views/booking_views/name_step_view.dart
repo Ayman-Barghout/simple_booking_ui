@@ -21,6 +21,13 @@ class NameStepView extends StatefulWidget {
 
 class _NameStepViewState extends State<NameStepView> {
   final _formStateKey = GlobalKey<FormState>();
+  String? fullName;
+
+  @override
+  void initState() {
+    super.initState();
+    fullName = context.read(bookingInfoProvider.state).fullName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +45,25 @@ class _NameStepViewState extends State<NameStepView> {
             const SizedBox(
               height: kSpaceXXLarge,
             ),
-            Consumer(builder: (context, watch, child) {
-              final fullName = watch(bookingInfoProvider.state).fullName;
-
-              return TextFormField(
-                initialValue: fullName,
-                style: context.textTheme.subtitle1,
-                decoration: InputDecoration(
-                    alignLabelWithHint: true,
-                    labelText: tr(LocaleKeys.labels_fullName)),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "This field is required";
-                  } else if (value.length < 3) {
-                    return "Name must be more than 3 letters";
-                  } else {
-                    return null;
-                  }
-                },
-              );
-            }),
+            TextFormField(
+              initialValue: fullName,
+              style: context.textTheme.subtitle1,
+              decoration: InputDecoration(
+                  alignLabelWithHint: true,
+                  labelText: tr(LocaleKeys.labels_fullName)),
+              onChanged: (value) {
+                fullName = value;
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "This field is required";
+                } else if (value.length < 3) {
+                  return "Name must be more than 3 letters";
+                } else {
+                  return null;
+                }
+              },
+            ),
             const SizedBox(
               height: kSpaceMedium,
             ),
@@ -66,6 +72,7 @@ class _NameStepViewState extends State<NameStepView> {
               onPressed: () {
                 if (_formStateKey.currentState != null &&
                     _formStateKey.currentState!.validate()) {
+                  context.read(bookingInfoProvider).updateFullName(fullName!);
                   widget.onSuccess();
                 }
               },
