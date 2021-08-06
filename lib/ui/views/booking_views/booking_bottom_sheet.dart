@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 
-import 'package:simple_booking_ui/theme/dimensions.dart';
+import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/budget_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking_views/name_step_view.dart';
@@ -56,64 +56,66 @@ class _BookingBottomSheetState extends State<BookingBottomSheet> {
       onTap: () {
         context.closeKeyboard();
       },
-      child: Container(
-        height: context.height * 0.93,
-        decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-            color: Colors.white),
-        padding: const EdgeInsets.only(top: kSpaceXLarge),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Consumer(builder: (context, watch, child) {
-              final currentPage = watch(_currentPageProvider);
+      child: LayoutBuilder(
+        builder: (context, constraints) => Container(
+          height: constraints.maxHeight * 0.93,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+              color: Colors.white),
+          padding: const EdgeInsets.only(top: kSpaceXLarge),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Consumer(builder: (context, watch, child) {
+                final currentPage = watch(_currentPageProvider);
 
-              return BookingSheetHeader(
-                title: stepsTitles[currentPage],
-                showBackButton: currentPage > 0,
-                onBackButtonPress: () {
-                  _animateToPage(currentPage - 1);
-                },
-              );
-            }),
-            const SizedBox(
-              height: kSpaceMedium,
-            ),
-            Consumer(builder: (context, watch, child) {
-              final currentPosition = watch(_currentPositionProvider).state;
-              final progress = (currentPosition + 1) / stepsTitles.length;
-
-              return LinearProgressIndicator(
-                minHeight: kSpaceXXSmall,
-                value: progress,
-                color: context.colorScheme.secondary,
-              );
-            }),
-            const SizedBox(
-              height: kSpaceLarge,
-            ),
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  NameStepView(
-                    onSuccess: () {
-                      _animateToPage(1);
-                    },
-                  ),
-                  BudgetStepView(
-                    onSuccess: () {
-                      _animateToPage(2);
-                    },
-                  ),
-                  SummaryStepView(
-                    onSuccess: () {},
-                  ),
-                ],
+                return BookingSheetHeader(
+                  title: stepsTitles[currentPage],
+                  showBackButton: currentPage > 0,
+                  onBackButtonPress: () {
+                    _animateToPage(currentPage - 1);
+                  },
+                );
+              }),
+              const SizedBox(
+                height: kSpaceMedium,
               ),
-            ),
-          ],
+              Consumer(builder: (context, watch, child) {
+                final currentPosition = watch(_currentPositionProvider).state;
+                final progress = (currentPosition + 1) / stepsTitles.length;
+
+                return LinearProgressIndicator(
+                  minHeight: kSpaceXXSmall,
+                  value: progress,
+                  color: context.colorScheme.secondary,
+                );
+              }),
+              const SizedBox(
+                height: kSpaceLarge,
+              ),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                    NameStepView(
+                      onSuccess: () {
+                        _animateToPage(1);
+                      },
+                    ),
+                    BudgetStepView(
+                      onSuccess: () {
+                        _animateToPage(2);
+                      },
+                    ),
+                    SummaryStepView(
+                      onSuccess: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -4,8 +4,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_booking_ui/helpers/helper_methods.dart';
 import 'package:simple_booking_ui/models/budget.dart';
+import 'package:simple_booking_ui/providers/booking_views_provider.dart';
 
-import 'package:simple_booking_ui/theme/dimensions.dart';
+import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
@@ -32,15 +33,7 @@ class BudgetStepView extends StatelessWidget {
           const SizedBox(
             height: kSpaceXXLarge,
           ),
-          ...Budget.values
-              .map<Widget>((budget) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: SelectableOutlinedButton<Budget>(
-                        text: getTextForBudget(budget),
-                        value: budget,
-                        provider: StateProvider<Budget>((ref) => Budget.low)),
-                  ))
-              .toList(),
+          const BudgetsList(),
           const SizedBox(
             height: kSpaceXSmall,
           ),
@@ -52,6 +45,31 @@ class BudgetStepView extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class BudgetsList extends StatelessWidget {
+  const BudgetsList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: Budget.values
+          .map<Widget>((budget) => Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: Consumer(builder: (context, watch, child) {
+                  final currentBudget = watch(bookingInfoProvider.state).budget;
+                  return SelectableOutlinedButton<Budget>(
+                      text: getTextForBudget(budget),
+                      value: budget,
+                      onSelected: () {
+                        context.read(bookingInfoProvider).updateBudget(budget);
+                      },
+                      isSelected: budget == currentBudget);
+                }),
+              ))
+          .toList(),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:simple_booking_ui/theme/colors.dart';
-import 'package:simple_booking_ui/theme/dimensions.dart';
-import 'package:simple_booking_ui/theme/text_styles.dart';
+import 'package:simple_booking_ui/ui/theme/colors.dart';
+import 'package:simple_booking_ui/ui/theme/dimensions.dart';
+import 'package:simple_booking_ui/ui/theme/text_styles.dart';
 
 final theme = ThemeData(
     fontFamily: 'Inter',

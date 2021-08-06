@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_booking_ui/theme/colors.dart';
+import 'package:simple_booking_ui/ui/theme/colors.dart';
 
 final headline1 =
     TextStyle(color: kPrimaryColor, fontSize: 24, fontWeight: FontWeight.w700);

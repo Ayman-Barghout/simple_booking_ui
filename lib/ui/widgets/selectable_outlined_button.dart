@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:simple_booking_ui/theme/dimensions.dart';
+import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 
 class SelectableOutlinedButton<T extends Object> extends StatelessWidget {
@@ -12,35 +12,34 @@ class SelectableOutlinedButton<T extends Object> extends StatelessWidget {
       this.height = 44,
       this.width = double.infinity,
       required this.value,
-      required this.provider})
+      required this.onSelected,
+      required this.isSelected})
       : super(key: key);
 
   final T value;
   final String text;
   final double height;
   final double width;
-  final StateProvider<T> provider;
+  final VoidCallback onSelected;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        if (context.read(provider).state != value) {
-          context.read(provider).state = value;
-        }
+        onSelected();
       },
       child: Consumer(builder: (context, watch, child) {
-        final selected = watch(provider).state == value;
         return AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.fastOutSlowIn,
           width: width,
           height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(kRadiusSmall),
             border: Border.all(
-                width: selected ? 2 : 1,
-                color: selected
+                width: isSelected ? 2 : 1,
+                color: isSelected
                     ? context.colorScheme.secondary
                     : context.colorScheme.onSurface),
             color: context.colorScheme.background,

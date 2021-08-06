@@ -13,12 +13,16 @@ class BookingInfo {
     required this.budget,
   });
 
-  BookingInfo.empty({this.fullName, this.budget = Budget.low});
+  BookingInfo.empty({this.fullName, this.budget = Budget.lowest});
 
   factory BookingInfo.fromJson(Map<String, dynamic> json) =>
       _$BookingInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$BookingInfoToJson(this);
+
+  bool validate() {
+    return this.fullName != null && this.fullName!.length > 3;
+  }
 
   BookingInfo copyWith({
     String? fullName,

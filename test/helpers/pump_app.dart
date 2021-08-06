@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
-import 'package:simple_booking_ui/theme/theme.dart';
+import 'package:simple_booking_ui/ui/theme/theme.dart';
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(Widget widget) {
