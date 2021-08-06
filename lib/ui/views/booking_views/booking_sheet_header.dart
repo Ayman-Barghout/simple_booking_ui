@@ -8,9 +8,16 @@ import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/cancel_button.dart';
 
 class BookingSheetHeader extends StatelessWidget {
-  const BookingSheetHeader({
-    Key? key,
-  }) : super(key: key);
+  const BookingSheetHeader(
+      {Key? key,
+      required this.title,
+      required this.showBackButton,
+      required this.onBackButtonPress})
+      : super(key: key);
+
+  final String title;
+  final bool showBackButton;
+  final void Function() onBackButtonPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,7 @@ class BookingSheetHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(tr(LocaleKeys.name), style: context.textTheme.headline1),
+              Text(title, style: context.textTheme.headline1),
               const SizedBox(
                 height: kSpaceXSmall,
               ),
