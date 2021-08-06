@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_booking_ui/app.dart';
-import 'package:simple_booking_ui/ui/screens/booking_screen/initiate_booking_screen.dart';
+import 'package:simple_booking_ui/ui/views/booking_views/initiate_booking_screen.dart';
 
 void main() {
   group('App', () {

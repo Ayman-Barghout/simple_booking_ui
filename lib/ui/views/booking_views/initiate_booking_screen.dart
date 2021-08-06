@@ -6,7 +6,7 @@ import 'package:simple_booking_ui/theme/colors.dart';
 import 'package:simple_booking_ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
-import 'package:simple_booking_ui/ui/screens/booking_screen/booking_bottom_sheet.dart';
+import 'package:simple_booking_ui/ui/views/booking_views/booking_bottom_sheet.dart';
 
 class InitiateBookingScreen extends StatelessWidget {
   @override
