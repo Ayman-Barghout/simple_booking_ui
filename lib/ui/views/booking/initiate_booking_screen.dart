@@ -30,8 +30,8 @@ class InitiateBookingScreen extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(
                         top: Radius.circular(kRadiusMedium))),
                 builder: (context) => const BookingBottomSheet(),
-                // Clear bookingInfoProvider data whether the user booked or canceled
-              ).whenComplete(() => context.read(bookingInfoProvider).reset());
+                // Clear bookingViewsProvider data whether the user booked or canceled
+              ).whenComplete(() => context.read(bookingViewsProvider).reset());
 
               if (bookingResult != null) {
                 if (bookingResult) {

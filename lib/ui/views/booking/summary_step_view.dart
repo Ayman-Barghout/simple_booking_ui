@@ -21,7 +21,7 @@ class SummaryStepView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: kSpaceMedium),
       child: Consumer(builder: (context, watch, child) {
-        final bookingInfo = watch(bookingInfoProvider.state);
+        final bookingInfo = watch(bookingViewsProvider.state);
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -56,7 +56,7 @@ class SummaryStepView extends StatelessWidget {
                   onPressed: () async {
                     context.read(isConfirmingBooking).state = true;
                     final result = await context
-                        .read(bookingInfoProvider)
+                        .read(bookingViewsProvider)
                         .confirmBooking();
 
                     Navigator.of(context).pop<bool>(result);

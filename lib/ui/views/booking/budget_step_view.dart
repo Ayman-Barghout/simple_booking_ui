@@ -71,12 +71,13 @@ class BudgetsList extends StatelessWidget {
           .map<Widget>((budget) => Padding(
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: Consumer(builder: (context, watch, child) {
-                  final currentBudget = watch(bookingInfoProvider.state).budget;
+                  final currentBudget =
+                      watch(bookingViewsProvider.state).budget;
                   return SelectableOutlinedButton<Budget>(
                       text: getTextForBudget(budget),
                       value: budget,
                       onSelected: () {
-                        context.read(bookingInfoProvider).updateBudget(budget);
+                        context.read(bookingViewsProvider).updateBudget(budget);
                       },
                       isSelected: budget == currentBudget);
                 }),

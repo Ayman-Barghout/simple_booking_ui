@@ -6,7 +6,7 @@ import 'package:simple_booking_ui/services/booking/booking_service_firebase.dart
 
 final isConfirmingBooking = StateProvider.autoDispose<bool>((ref) => false);
 
-final bookingInfoProvider = StateNotifierProvider<BookingViewsProvider>((ref) {
+final bookingViewsProvider = StateNotifierProvider<BookingViewsProvider>((ref) {
   final bookingService = ref.watch(bookingServiceFirebaseProvider);
   return BookingViewsProvider(bookingService);
 });

@@ -26,7 +26,7 @@ class _NameStepViewState extends State<NameStepView> {
   @override
   void initState() {
     super.initState();
-    fullName = context.read(bookingInfoProvider.state).fullName;
+    fullName = context.read(bookingViewsProvider.state).fullName;
   }
 
   @override
@@ -76,7 +76,9 @@ class _NameStepViewState extends State<NameStepView> {
                 onPressed: () {
                   if (_formStateKey.currentState != null &&
                       _formStateKey.currentState!.validate()) {
-                    context.read(bookingInfoProvider).updateFullName(fullName!);
+                    context
+                        .read(bookingViewsProvider)
+                        .updateFullName(fullName!);
                     context.closeKeyboard();
                     widget.onSuccess();
                   }
