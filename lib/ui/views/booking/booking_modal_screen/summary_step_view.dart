@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_booking_ui/helpers/helper_methods.dart';
-import 'package:simple_booking_ui/providers/booking_views_provider.dart';
+import 'package:simple_booking_ui/providers/booking/booking_views_provider.dart';
 
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
@@ -42,6 +42,7 @@ class SummaryStepView extends StatelessWidget {
               child: Consumer(builder: (context, watch, child) {
                 final isConfirming = watch(isConfirmingBooking).state;
                 return CustomElevatedButton(
+                  key: const ValueKey("summaryStepButton"),
                   text: tr(isConfirming
                       ? LocaleKeys.confirming
                       : LocaleKeys.userActions_confirmBooking),

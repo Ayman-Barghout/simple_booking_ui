@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_booking_ui/helpers/helper_methods.dart';
 import 'package:simple_booking_ui/models/booking/budget.dart';
-import 'package:simple_booking_ui/providers/booking_views_provider.dart';
+import 'package:simple_booking_ui/providers/booking/booking_views_provider.dart';
 
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
@@ -48,6 +48,7 @@ class BudgetStepView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: kSpaceMedium),
               child: CustomElevatedButton(
+                key: const ValueKey("budgetStepButton"),
                 text: tr(LocaleKeys.userActions_continue),
                 onPressed: () {
                   onSuccess();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:simple_booking_ui/providers/booking_views_provider.dart';
+import 'package:simple_booking_ui/providers/booking/booking_views_provider.dart';
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
@@ -72,6 +72,7 @@ class _NameStepViewState extends State<NameStepView> {
             Padding(
               padding: const EdgeInsets.only(right: kSpaceMedium),
               child: CustomElevatedButton(
+                key: const ValueKey("nameStepButton"),
                 text: tr(LocaleKeys.userActions_continue),
                 onPressed: () {
                   if (_formStateKey.currentState != null &&

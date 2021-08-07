@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:simple_booking_ui/providers/booking_views_provider.dart';
+import 'package:simple_booking_ui/providers/booking/booking_views_provider.dart';
 
 void main() {
   group('Confirm Booking Provider', () {
