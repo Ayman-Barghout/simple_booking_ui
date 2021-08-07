@@ -8,8 +8,8 @@ import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/generated/locale_keys.g.dart';
 import 'package:simple_booking_ui/ui/widgets/custom_elevated_button.dart';
-import 'package:simple_booking_ui/ui/views/booking/booking_bottom_sheet.dart';
 import 'package:simple_booking_ui/ui/views/booking/booking_success_dialog.dart';
+import 'package:simple_booking_ui/ui/views/booking/booking_modal_screen/booking_modal_screen.dart';
 
 class InitiateBookingScreen extends StatelessWidget {
   @override
@@ -29,7 +29,7 @@ class InitiateBookingScreen extends StatelessWidget {
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                         top: Radius.circular(kRadiusMedium))),
-                builder: (context) => const BookingBottomSheet(),
+                builder: (context) => const BookingModalScreen(),
                 // Clear bookingViewsProvider data whether the user booked or canceled
               ).whenComplete(() => context.read(bookingViewsProvider).reset());
 

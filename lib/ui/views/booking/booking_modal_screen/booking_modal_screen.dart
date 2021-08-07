@@ -7,9 +7,9 @@ import 'package:simple_booking_ui/providers/booking_views_provider.dart';
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 import 'package:simple_booking_ui/ui/widgets/cancel_button.dart';
-import 'package:simple_booking_ui/ui/views/booking/budget_step_view.dart';
-import 'package:simple_booking_ui/ui/views/booking/name_step_view.dart';
-import 'package:simple_booking_ui/ui/views/booking/summary_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/booking_modal_screen/budget_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/booking_modal_screen/name_step_view.dart';
+import 'package:simple_booking_ui/ui/views/booking/booking_modal_screen/summary_step_view.dart';
 
 /// A [StateProvider] for the current position of booking steps' [PageController]
 final _currentPositionProvider =
@@ -18,14 +18,14 @@ final _currentPositionProvider =
 final _currentPageProvider = Provider.autoDispose<int>(
     (ref) => ref.watch(_currentPositionProvider).state.round());
 
-class BookingBottomSheet extends StatefulWidget {
-  const BookingBottomSheet({Key? key}) : super(key: key);
+class BookingModalScreen extends StatefulWidget {
+  const BookingModalScreen({Key? key}) : super(key: key);
 
   @override
-  _BookingBottomSheetState createState() => _BookingBottomSheetState();
+  _BookingModalScreenState createState() => _BookingModalScreenState();
 }
 
-class _BookingBottomSheetState extends State<BookingBottomSheet> {
+class _BookingModalScreenState extends State<BookingModalScreen> {
   late PageController _pageController;
 
   final stepsTitles = <String>[
