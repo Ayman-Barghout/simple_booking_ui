@@ -50,9 +50,8 @@ class _NameStepViewState extends State<NameStepView> {
               child: TextFormField(
                 initialValue: fullName,
                 style: context.textTheme.subtitle1,
-                decoration: InputDecoration(
-                    alignLabelWithHint: true,
-                    labelText: tr(LocaleKeys.labels_fullName)),
+                decoration:
+                    InputDecoration(labelText: tr(LocaleKeys.labels_fullName)),
                 onChanged: (value) {
                   fullName = value;
                 },

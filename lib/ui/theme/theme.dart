@@ -26,14 +26,17 @@ final theme = ThemeData(
           vertical: kSpaceXSmall, horizontal: kSpaceSmall),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(kRadiusSmall),
-        gapPadding: 0,
         borderSide: const BorderSide(color: kBorderColor),
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(kRadiusSmall),
-        gapPadding: 0,
         borderSide: const BorderSide(color: kBorderColor),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(kRadiusSmall),
+        borderSide: const BorderSide(color: kSecondaryColor, width: 2),
+      ),
+      alignLabelWithHint: true,
       labelStyle: overline,
       hintStyle: overline,
     ),
@@ -53,6 +56,8 @@ final theme = ThemeData(
             }))),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         textStyle: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.disabled)) {
             return subtitle2.copyWith(color: kLightTextColor);

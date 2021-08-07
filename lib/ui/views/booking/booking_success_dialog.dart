@@ -12,12 +12,12 @@ class BookingSuccessDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      insetPadding: EdgeInsets.zero,
+    return Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(kRadiusMedium)),
       backgroundColor: context.colorScheme.background,
-      content: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(kSpaceLarge),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

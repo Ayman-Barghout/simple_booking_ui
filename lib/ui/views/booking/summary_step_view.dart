@@ -26,6 +26,7 @@ class SummaryStepView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
+            // BookingInfo's fullName is nullable so we need to check
             if (bookingInfo.fullName != null)
               SummaryEntry(
                 title: tr(LocaleKeys.bookingSteps_name),
@@ -35,7 +36,7 @@ class SummaryStepView extends StatelessWidget {
               title: tr(LocaleKeys.bookingSteps_budget),
               value: getTextForBudget(bookingInfo.budget),
             ),
-            const Spacer(flex: 22),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(right: kSpaceMedium),
               child: Consumer(builder: (context, watch, child) {
@@ -63,7 +64,7 @@ class SummaryStepView extends StatelessWidget {
                 );
               }),
             ),
-            const Spacer(flex: 10),
+            const Spacer(),
           ],
         );
       }),

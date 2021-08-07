@@ -20,21 +20,21 @@ class InitiateBookingScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: kSpaceMedium),
           child: CustomElevatedButton(
             onPressed: () async {
-              final result = await showModalBottomSheet<bool>(
-                      context: context,
-                      isScrollControlled: true,
-                      isDismissible: false,
-                      enableDrag: false,
-                      barrierColor: const Color(0xFF7D7B7B),
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(kRadiusMedium))),
-                      builder: (context) => const BookingBottomSheet())
-                  .whenComplete(
-                      () => context.read(bookingInfoProvider).reset());
+              final bookingResult = await showModalBottomSheet<bool>(
+                context: context,
+                isScrollControlled: true,
+                isDismissible: false,
+                enableDrag: false,
+                barrierColor: const Color(0xFF7D7B7B),
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(kRadiusMedium))),
+                builder: (context) => const BookingBottomSheet(),
+                // Clear bookingInfoProvider data whether the user booked or canceled
+              ).whenComplete(() => context.read(bookingInfoProvider).reset());
 
-              if (result != null) {
-                if (result) {
+              if (bookingResult != null) {
+                if (bookingResult) {
                   showDialog(
                       context: context,
                       barrierDismissible: false,

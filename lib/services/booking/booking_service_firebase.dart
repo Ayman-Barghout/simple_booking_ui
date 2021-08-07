@@ -16,6 +16,6 @@ class BookingServiceFirebase implements BookingService {
   }
 
   Future<void> _addEntryToFirebase(Map<String, dynamic> data) async {
-    // logic to saving to firebase here
+    // logic for saving to firebase here
   }
 }

@@ -11,6 +11,7 @@ import 'package:simple_booking_ui/ui/views/booking/budget_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking/name_step_view.dart';
 import 'package:simple_booking_ui/ui/views/booking/summary_step_view.dart';
 
+/// A [StateProvider] for the current position of booking steps' [PageController]
 final _currentPositionProvider =
     StateProvider.autoDispose<double>((ref) => 0.0);
 
