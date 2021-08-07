@@ -5,7 +5,7 @@ import 'package:simple_booking_ui/ui/views/booking/initiate_booking_screen.dart'
 
 void main() {
   group('App', () {
-    testWidgets('renders HomeScreen', (tester) async {
+    testWidgets('renders initiate booking screen', (tester) async {
       await EasyLocalization.ensureInitialized();
       await tester.pumpWidget(App());
       await tester.pumpAndSettle();

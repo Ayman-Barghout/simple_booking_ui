@@ -154,6 +154,7 @@ class Header extends StatelessWidget {
             if (showBackButton)
               IconButton(
                 icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: isConfirming ? null : onBackButtonPress,
               ),
             if (showBackButton) const SizedBox(width: kSpaceXXSmall),
