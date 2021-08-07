@@ -39,17 +39,20 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text(plural(LocaleKeys.validation_minLength, 3)),
           findsOneWidget);
+
       // Checking that if fields validates, user will be moved to budget step
       await tester.enterText(nameTextFormFieldFinder, "Alek");
       await tester.tap(firstContinueButtonFinder);
       await tester.pumpAndSettle();
       expect(find.text(tr(LocaleKeys.nameStepPrompt)), findsNothing);
       expect(find.text(tr(LocaleKeys.budgetStepPrompt)), findsOneWidget);
+
       // Choosing a different budget than the default (lowest)
       final averageBudgetSelectableButtonFinder =
           find.text(getTextForBudget(Budget.average));
       expect(averageBudgetSelectableButtonFinder, findsOneWidget);
       await tester.tap(averageBudgetSelectableButtonFinder);
+
       // Checking that by clicking continue button the user will be moved to summary step
       final secondContinueButtonFinder =
           find.byKey(const ValueKey('budgetStepButton'));
@@ -57,10 +60,12 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text(tr(LocaleKeys.budgetStepPrompt)), findsNothing);
       expect(find.text(tr(LocaleKeys.bookingSteps_summary)), findsOneWidget);
+
       // Checking that the data entered in the previous steps are preserved,
       // This also tests the bookingViewsProvider
       expect(find.text('Alek'), findsOneWidget);
       expect(find.text(getTextForBudget(Budget.average)), findsOneWidget);
+
       // Confirming booking shows the booking complete dialog
       final confirmBookingButtonFinder =
           find.byKey(const ValueKey("summaryStepButton"));
