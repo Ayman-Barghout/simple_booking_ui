@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:simple_booking_ui/ui/theme/dimensions.dart';
 import 'package:simple_booking_ui/helpers/ui/extensions.dart';
 
@@ -25,25 +23,29 @@ class SelectableOutlinedButton<T extends Object> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onSelected();
-      },
-      child: Consumer(builder: (context, watch, child) {
-        return AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.fastOutSlowIn,
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(kRadiusSmall),
-            border: Border.all(
-                width: isSelected ? 2 : 1,
-                color: isSelected
-                    ? context.colorScheme.secondary
-                    : context.colorScheme.onSurface),
-            color: context.colorScheme.background,
-          ),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.fastOutSlowIn,
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(kRadiusSmall),
+        border: Border.all(
+            width: isSelected ? 2 : 1,
+            color: isSelected
+                ? context.colorScheme.secondary
+                : context.colorScheme.onSurface),
+      ),
+      child: Material(
+        color: context.colorScheme.background,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kRadiusSmall),
+        ),
+        type: MaterialType.button,
+        child: InkWell(
+          onTap: () {
+            onSelected();
+          },
           child: Center(
             child: Text(
               text,
@@ -51,8 +53,8 @@ class SelectableOutlinedButton<T extends Object> extends StatelessWidget {
                   .copyWith(color: context.colorScheme.primary),
             ),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }

@@ -61,10 +61,10 @@ class _BookingModalScreenState extends State<BookingModalScreen> {
       child: LayoutBuilder(
         builder: (context, constraints) => Container(
           height: constraints.maxHeight * 0.93,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius:
-                BorderRadius.vertical(top: Radius.circular(kRadiusMedium)),
+          decoration: BoxDecoration(
+            color: context.colorScheme.background,
+            borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(kRadiusMedium)),
           ),
           padding: const EdgeInsets.only(top: kSpaceXLarge),
           child: Column(
@@ -152,10 +152,16 @@ class Header extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (showBackButton)
-              IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
-                onPressed: isConfirming ? null : onBackButtonPress,
+              ClipOval(
+                child: Material(
+                  color: Colors.transparent,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
+                    tooltip:
+                        MaterialLocalizations.of(context).backButtonTooltip,
+                    onPressed: isConfirming ? null : onBackButtonPress,
+                  ),
+                ),
               ),
             if (showBackButton) const SizedBox(width: kSpaceXXSmall),
             Column(

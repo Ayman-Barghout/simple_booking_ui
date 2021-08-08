@@ -19,7 +19,7 @@
     "validation": {
         "required": "This field is required",
         "minLength": {
-            "other": "Please enter more than {} letters"
+            "other": "Please enter {} letters or more"
           }
     },
     "bookForQuote": "Book video call for quote",
